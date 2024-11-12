@@ -71,7 +71,7 @@ var KTarticlesAddarticle = function () {
 
                             const requestMethod = articleDto.id ? 'PUT' : 'POST';
                             const url = articleDto.id ? `api/articles/` + articleDto.id : "api/articles";
-                            alert(requestMethod+" : "+url);
+                            //alert(requestMethod+" : "+url);
                             //  Send the request
                             fetch(url, {
                                 method: requestMethod,

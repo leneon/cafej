@@ -31,7 +31,7 @@ var KTRolesAddRole = function () {
                 // Submit button event listener
                 const submitButton = modalElement.querySelector('[data-kt-roles-modal-action="submit"]');
                 submitButton.addEventListener("click", (event) => {
-                    alert("cc");
+                    //alert("cc");
                     event.preventDefault();
 
                     // Validate form

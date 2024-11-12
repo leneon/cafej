@@ -50,7 +50,7 @@ public class ArticleService {
         article.setCategorie(categorie);
 
         articleRepository.save(article);
-        return new ArticleDto(article);
+        return new ArticleDto(article.getId());
     }
 
     public List<ArticleDto> getAllArticlesWithCommentCount() {

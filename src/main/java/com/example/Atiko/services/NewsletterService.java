@@ -1,10 +1,7 @@
 package com.example.Atiko.services;
 
-import com.example.Atiko.dtos.CategorieDto;
 import com.example.Atiko.dtos.NewsletterDto;
-import com.example.Atiko.entities.Categorie;
 import com.example.Atiko.entities.Newsletter;
-import com.example.Atiko.repositories.CategorieRepository;
 import com.example.Atiko.repositories.NewsletterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

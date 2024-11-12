@@ -46,6 +46,7 @@ public class ArticleDto {
     public void setCategorie(CategorieDto categorie) {
         this.categorie = categorie;
     }
+    public ArticleDto(Long id) {}
     public ArticleDto(Article art) {
     this.id = art.getId();
     this.titre = art.getTitre();
@@ -54,7 +55,8 @@ public class ArticleDto {
     this.couverture = art.getCouverture();
     this.categorie = new CategorieDto(art.getCategorie());
     this.createdAt = art.getCreatedAt();
-    this.commentaires = art.getCommentaires().stream()
+    if(!art.getCommentaires().isEmpty() && (art.getCommentaires()!=null))
+        this.commentaires = art.getCommentaires().stream()
                 .map(commentaire -> new CommentaireDto(commentaire))
                 .collect(Collectors.toList());
     }
@@ -78,12 +80,13 @@ public void setCouverturePath(String couverturePath) {
         this.commentCount = commentCount;
         this.likes = article.getLikes();
         this.dislikes = article.getDislikes();
-        this.commentaires = article.getCommentaires().stream()
-        // Filter comments where statut is true
-        .filter(commentaire -> commentaire.getStatut() != null && commentaire.getStatut()) 
-        // Map each filtered commentaire to CommentaireDto
-        .map(commentaire -> new CommentaireDto(commentaire))
-        .collect(Collectors.toList());
+        if(!article.getCommentaires().isEmpty() && article.getCommentaires()!=null)
+            this.commentaires = article.getCommentaires().stream()
+            // Filter comments where statut is true
+            .filter(commentaire -> commentaire.getStatut() != null && commentaire.getStatut()) 
+            // Map each filtered commentaire to CommentaireDto
+            .map(commentaire -> new CommentaireDto(commentaire))
+            .collect(Collectors.toList());
     
     }
     public Long getId() {
