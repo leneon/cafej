@@ -1,15 +1,9 @@
-# Utiliser une image de base Java (par exemple OpenJDK 17)
-FROM openjdk:17-jdk-slim
-
-# Définir le répertoire de travail
-WORKDIR /app
-
-# Copier le fichier JAR de votre application dans l'image Docker
-# Remplacez 'monapp.jar' par le nom de votre fichier JAR
-COPY target/monapp.jar app.jar
-
-# Exposer le port (changer le numéro de port si nécessaire)
-EXPOSE 8080
-
-# Définir la commande de lancement de l'application
-CMD ["java", "-jar", "app.jar"]
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG JAVA_OPTS
+ENV JAVA_OPTS=$JAVA_OPTS
+COPY target/atiko-0.0.1-SNAPSHOT.jar cafej.jar
+EXPOSE 3000
+ENTRYPOINT exec java $JAVA_OPTS -jar cafej.jar
+# For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.
+#ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar cafej.jar
